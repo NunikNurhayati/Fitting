@@ -42,7 +42,7 @@ X = np.reshape(y,(-1,1))
 print("fitting to HMM and decoding ...", end="")
 
 # Make an HMM instance and execute fit
-model = GaussianHMM(n_components=10, covariance_type="full", n_iter=1000).fit(X)
+model = GaussianHMM(n_components=30, covariance_type="full", n_iter=1000).fit(X)
 
 # Predict the optimal sequence of internal hidden state
 hidden_states = model.predict(X)
@@ -96,5 +96,5 @@ plt.figure(1)
 plt.title("hmm Gaussian method fitting result vs data")
 plt.plot(x,y, 'r')#, x,y, 'bo')
 plt.plot(x_plot, y_plot, 'k')
-plt.savefig("result")
+plt.savefig("result30")
 plt.show()
