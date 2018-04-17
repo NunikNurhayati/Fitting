@@ -19,7 +19,7 @@ print(__doc__)
 
 "Import data from excel"
 from xlrd import open_workbook
-book = open_workbook('data.xlsx')
+book = open_workbook('Data2.xlsx')
 sheet = book.sheet_by_index(0)
 
 time_x = []
@@ -96,5 +96,5 @@ plt.figure(1)
 plt.title("hmm Gaussian method fitting result vs data")
 plt.plot(x,y, 'r')#, x,y, 'bo')
 plt.plot(x_plot, y_plot, 'k')
-plt.savefig("result")
+plt.savefig("resultData2n5")
 plt.show()
