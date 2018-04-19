@@ -76,7 +76,7 @@ X = np.reshape(y,(-1,1))
 
 # Make an HMM instance and execute fit
 
-n_comp = 5
+n_comp = 10
 
 model = GaussianHMM(n_components=n_comp, covariance_type="full", n_iter=1000).fit(X)
 
@@ -152,6 +152,8 @@ for i in range(0,len(result)):
 
 "Print RESULT"
 
+print(result)
+
 print("Record of all hidden state")
 
 print("**********************************")
@@ -194,6 +196,6 @@ plt.plot(x,y, 'r')#, x,y, 'bo')
 
 plt.plot(x_plot, y_plot, 'k')
 
-plt.savefig("resultData2n5new")
+plt.savefig("resultData2n10new")
 
 plt.show()
