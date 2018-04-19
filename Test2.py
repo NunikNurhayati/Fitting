@@ -152,7 +152,7 @@ for i in range(0,len(result)):
 
 "Print RESULT"
 
-print(result)
+# print(result)
 
 print("Record of all hidden state")
 
