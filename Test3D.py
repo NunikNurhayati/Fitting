@@ -24,7 +24,7 @@ figname2 = "3DData2n=15RTV300mVCurrent4"
 
 "Import data from excel file"
 from xlrd import open_workbook
-book = open_workbook('data.xlsx')
+book = open_workbook('Data2.xlsx')
 sheet = book.sheet_by_index(0)
 
 x = []
@@ -183,8 +183,9 @@ ax = fig.gca(projection='3d')
 #     globals()['plo%s' % i] = ax.plot_surface(XX, YY, globals()['Z_%s' % i],cmap='viridis',linewidth=0)
 # ax.scatter(xx, yy, zz)
 for i in range(0,len(density)):
-    ax.scatter(density[i][0][0],density[i][0][1],density[i][1],color='b') 
-    ax.text(density[i][0][0],density[i][0][1],density[i][1],  '%s' % (str(density[i][1])), size=10, zorder=1,  
+    if density[i][1] != 0:
+        ax.scatter(density[i][0][0],density[i][0][1],density[i][1],color='b') 
+        ax.text(density[i][0][0],density[i][0][1],density[i][1],  '(%s,%s)%s' % (str(density[i][0][0]),str(density[i][0][1]),str(density[i][1])), size=7, zorder=1,  
  color='k') 
 # for i,j,k in zip(xx,yy,zz):
 #     ax.annotate(str(zz),xyz=(i,j,k))
