@@ -24,8 +24,7 @@ from xlrd import open_workbook
 
 book = open_workbook('Data2.xlsx')
 
-sheet = book.sheet_by_index(1)
-
+sheet = book.sheet_by_index(2)
 
 
 x = []
@@ -33,13 +32,11 @@ x = []
 y = []
 
 
-
 for k in range(1,sheet.nrows):
 
     x.append(str(sheet.row_values(k)[1-1]))
 
     y.append(str(sheet.row_values(k)[2-1]))
-
 
 
 x = np.asarray(map(float, x))
@@ -51,12 +48,11 @@ y = np.asarray(map(float, y))
 X = np.reshape(y,(-1,1))
 
 
-
 "Run Gaussian HMM"
 
 # Make an HMM instance and execute fit
 
-n_comp = 3
+n_comp = 2
 
 model = GaussianHMM(n_components=n_comp, covariance_type="full", n_iter=1000).fit(X)
 
@@ -175,6 +171,6 @@ plt.plot(x,y, 'r')#, x,y, 'bo')
 
 plt.plot(x_plot, y_plot, 'k')
 
-plt.savefig("resultData2n3Sheet1")
+plt.savefig("resultData2n2T=77KCurrent12")
 
 plt.show()
