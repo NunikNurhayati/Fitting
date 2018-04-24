@@ -6,7 +6,7 @@ from matplotlib import cm, pyplot as plt
 from hmmlearn.hmm import GaussianHMM, GMMHMM
 from hmmlearn.base import _BaseHMM
 from matplotlib._image import GAUSSIAN
-from matplotlib.mlab import bivariate_normal
+# from matplotlib.mlab import bivariate_normal
 from mpl_toolkits.mplot3d import Axes3D
 # from Cython.Includes.libcpp import pair
 
