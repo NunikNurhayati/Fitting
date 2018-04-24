@@ -12,20 +12,20 @@ from mpl_toolkits.mplot3d import Axes3D
 
 "INPUT"
 #number of state
-n = 15
+n = 2
 #covariance type
 covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "Data2n=15RTV300mVCurrent4%d" % n
+figname1 = "resultData2n2T=90KCurrent10until27%d" % n
 
-figname2 = "3DData2n=15RTV300mVCurrent4"
+figname2 = "3DresultData2n2T=90KCurrent10until27"
 
 "Import data from excel file"
 from xlrd import open_workbook
 book = open_workbook('Data2.xlsx')
-sheet = book.sheet_by_index(0)
+sheet = book.sheet_by_index(5)
 
 x = []
 y = []

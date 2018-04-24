@@ -24,7 +24,7 @@ from xlrd import open_workbook
 
 book = open_workbook('Data2.xlsx')
 
-sheet = book.sheet_by_index(6)
+sheet = book.sheet_by_index(7)
 
 
 x = []
@@ -171,6 +171,6 @@ plt.plot(x,y, 'r')#, x,y, 'bo')
 
 plt.plot(x_plot, y_plot, 'k')
 
-plt.savefig("resultData2n2T=90KCurrent10until80s")
+plt.savefig("resultData2n2T=110KCurrent6until210s")
 
 plt.show()
