@@ -18,14 +18,14 @@ covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "resultData2n2T=90KCurrent10until27%d" % n
+figname1 = "resultData2n2T=110KCurrent6until210s%d" % n
 
 # figname2 = "3DresultData2n2T=90KCurrent10until27"
 
 "Import data from excel file"
 from xlrd import open_workbook
 book = open_workbook('Data2.xlsx')
-sheet = book.sheet_by_index(5)
+sheet = book.sheet_by_index(7)
 
 x = []
 y = []
