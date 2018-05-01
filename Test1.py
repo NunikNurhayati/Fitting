@@ -12,20 +12,22 @@ from matplotlib._image import GAUSSIAN
 
 "INPUT"
 #number of state
-n = 3
+n = 5
 #covariance type
 covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "resultData2n3T=150KCurrent11%d" % n
+figname1 = "resultData2n5T=110KCurren6until210%d" % n
 
 # figname2 = "3DresultData2n2T=90KCurrent10until27"
 
 "Import data from excel file"
 from xlrd import open_workbook
 book = open_workbook('Data2.xlsx')
-sheet = book.sheet_by_index(9)
+sheet = book.sheet_by_index(7)
+
+print(sheet.nrows)
 
 x = []
 y = []

@@ -10,20 +10,20 @@ import os
 
 "INPUT"
 #number of state
-n = 10
+n = 15
 #covariance type
 covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "result__RTV300mVCurrent4n10%d" % n
+figname1 = "result__RTV300mVCurrent4n15%d" % n
 
-figname2 = "result__RTV300mVCurrent4n10analysis1_3d_scatterplot"
+figname2 = "result__RTV300mVCurrent4n15analysis1_3d_scatterplot"
 
-figname3 = "result__RTV300mVCurrent4n10analysis1_colormapplot"
+figname3 = "result__RTV300mVCurrent4n15analysis1_colormapplot"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, '2DResults_RTV300mVCurrent4n10/')
+results_dir = os.path.join(script_dir, '2DResults_RTV300mVCurrent4n15/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
