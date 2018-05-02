@@ -10,19 +10,19 @@ import os
 
 "INPUT"
 #number of state
-n = 10
+n = 15
 #covariance type
 covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "result__RTV300mVCurrent4n10%d" % n
-figname2 = "result__RTV300mVCurrent4n10analysis1_3d_scatterplot"
-figname3 = "result__RTV300mVCurrent4n10analysis1_colormapplot_1"
+figname1 = "result__RTV300mVCurrent4n15%d" % n
+figname2 = "result__RTV300mVCurrent4n15analysis1_3d_scatterplot"
+figname3 = "result__RTV300mVCurrent4n15analysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, 'RTV300mVCurrent4n10/')
+results_dir = os.path.join(script_dir, 'RTV300mVCurrent4n15/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
@@ -56,6 +56,12 @@ model = GaussianHMM(n_components=n, covariance_type=covar_type, n_iter=iterr).fi
  
 # Predict the optimal sequence of internal hidden state
 hidden_states = model.predict(X)
+print("Number of Rows")
+print("--------------")
+print(sheet.nrows)
+print(" ")
+print("Hidden States")
+print("-------------")
 print(hidden_states)
  
 "Hidden state"
@@ -147,35 +153,36 @@ for i in range(0,n):
             analysis_2[-1][1] += 1
             analysis_2[-1][2] += j[4]
   
-"Print All hidden state parameter"
-print("Transition matrix")
-print(model.transmat_)
-print()
+# "Print All hidden state parameter"
+# print("Transition matrix")
+# print(model.transmat_)
+# print()
+# 
+# print("Means and Variance of each hidden state")
+# 
+# for i in range(model.n_components):
+#     print("{0}th hidden state".format(i))
+#     print("mean = ", model.means_[i])
+#     print("variance = ", np.diag(model.covars_[i]))
+#     print()
 
-print("Means and Variance of each hidden state")
-
-for i in range(model.n_components):
-    print("{0}th hidden state".format(i))
-    print("mean = ", model.means_[i])
-    print("variance = ", np.diag(model.covars_[i]))
-    print()
-
-
-"Analysis 2 : Total time domain"
-analysis_2 = []
-for i in range(0,n):
-    analysis_2.append([i,0,0])
-    for j in result:
-        if j[3] == i:
-            analysis_2[-1][1] += 1
-            analysis_2[-1][2] += j[4]
 
 "Print RESULT"
+print(" ")
 print("Record of all hidden state")
 print("**********************************")
 print("No.","   ","TIME Start"," - ","TIME End","    ","VALUE","         ","Hidden State {}th","     ","Time domain")
 for i in range(0,len(result)):
     print(i, "    ",result[i][0], "    - ", result[i][1], "    ", result[i][2], "      ", result[i][3], "             ", result[i][4])
+
+
+# "Print list pair of x_i,x_i+1"
+# print("record of list pair of x_i,x_i+1")
+# print("hidden_states original", hidden_states)
+# print('x_i     ', x_i3)
+# print('x_i_plus', x_i3_plus)            
+# print('list of [x_i,x_i_plus]', pairr)
+# print('List of [[x_i,x_i_plus], number of repetition]', density3)
 
 print(" ")
 print("Means and total domain of each hidden state")
@@ -187,24 +194,7 @@ for i in range(model.n_components):
     print("total time_domain = ", analysis_2[i][2])
 #     print("variance = ", np.diag(model.covars_[i]))
     print()
-
-
-"Print list pair of x_i,x_i+1"
-print("record of list pair of x_i,x_i+1")
-print("hidden_states original", hidden_states)
-print('x_i     ', x_i3)
-print('x_i_plus', x_i3_plus)            
-print('list of [x_i,x_i_plus]', pairr)
-print('List of [[x_i,x_i_plus], number of repetition]', density3)
    
-print("Means and Variance of each hidden state")
-for i in range(model.n_components):
-    print("{0}th hidden state".format(i))
-    print("total number with this hidden state = ", analysis_2[i][1])
-    print("mean = ", model.means_[i])
-    print("total time_domain = ", analysis_2[i][2])
-#     print("variance = ", np.diag(model.covars_[i]))
-    print()
   
 "Plot data and result"
 x_plot = []
@@ -221,7 +211,7 @@ plt.plot(x,y, 'r')#, x,y, 'bo')
 plt.plot(x_plot, y_plot, 'k')
 # plt.savefig("diag101000") 
 plt.savefig(results_dir + "%s.png" % figname1)
-plt.close()
+plt.show()
   
 "Plot Analysis 3"
 ##3D scatter plot
@@ -240,6 +230,7 @@ ax.set_xlabel('Hidden State')
 ax.set_ylabel('Hidden State')
 ax.set_zlabel('Number')
 plt.savefig(results_dir + "%s.png" % figname2)
+plt.close()
  
 ##colormap plot_1
 zz3 = np.asarray(zz3)
