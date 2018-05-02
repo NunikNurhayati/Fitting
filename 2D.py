@@ -224,7 +224,7 @@ plt.savefig(results_dir + "%s.png" % figname2)
 zz3 = np.asarray(zz3)
 Z3 = zz3.reshape(n, n)
 fig, ax = plt.subplots()
-im = ax.imshow(Z3,cmap='gist_ncar',origin='lower',interpolation='bilinear')
+im = ax.imshow(Z3,cmap='nipy_spectral',origin='lower',interpolation='bilinear')
 # We want to show all ticks...
 ax.set_xticks(np.arange(len(XY)))
 ax.set_yticks(np.arange(len(XY)))
