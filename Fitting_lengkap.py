@@ -10,26 +10,26 @@ import os
 
 "INPUT"
 #number of state
-n = 25
+n = 16
 #covariance type
 covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "result__150K300mVCurrent11until100n%d" % n
-figname2 = "result__150K300mVCurrent11until100n25analysis1_3d_scatterplot"
-figname3 = "result__150K300mVCurrent11until100n25analysis1_colormapplot_1"
+figname1 = "result__150K300mVCurrent12until40n%d" % n
+figname2 = "result__150K300mVCurrent12until40n16analysis1_3d_scatterplot"
+figname3 = "result__150K300mVCurrent12until40n16analysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, '150K300mVCurrent11until100n25/')
+results_dir = os.path.join(script_dir, '150K300mVCurrent12until40n16/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
 "Import data from excel file"
 from xlrd import open_workbook
 book = open_workbook('Data2.xlsx')
-sheet = book.sheet_by_index(10)
+sheet = book.sheet_by_index(11)
 
 "Input"
 #start_time
