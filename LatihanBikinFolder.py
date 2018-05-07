@@ -31,10 +31,10 @@ results_dir = os.path.join(script_dir, '150K300mVCurrent12until40n5/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
-f = open('77K.txt','w')
+f = open('output.txt','w')
 sys.stdout = f
 
-path= '/home/xug/nearline/bamfiles'
+path= 'C:\Users\Nunik Nurhayati\git\Fitting\77K300mVCurrent10n5'
 bamfiles = glob.glob(path + '/*.bam')
 
 
@@ -268,12 +268,3 @@ plt.savefig(results_dir + "%s.png" % figname3)
 plt.show()
 
 
-for bamfile in bamfiles:
-    filename = bamfile.split('/')[-1]
-    print 'Filename:', filename
-    samtoolsin = subprocess.Popen(["/share/bin/samtools/samtools","view",bamfile],
-                                  stdout=subprocess.PIPE,bufsize=1)
-    linelist= samtoolsin.stdout.readlines()
-    print 'Readlines finished!'
-    ........print....
-    ........print....
