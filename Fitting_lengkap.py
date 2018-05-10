@@ -8,6 +8,14 @@ from hmmlearn.base import _BaseHMM
 from mpl_toolkits.mplot3d import Axes3D
 import os
 
+
+"To call function of output Data"
+import os,sys
+import subprocess
+import glob
+from os import path
+
+
 "INPUT"
 #number of state
 n = 16
@@ -25,6 +33,10 @@ script_dir = os.path.dirname(__file__)
 results_dir = os.path.join(script_dir, '150K300mVCurrent12until40n16/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
+
+"Output Data"
+f = open('output3.txt','w')
+sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook

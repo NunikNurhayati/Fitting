@@ -7,10 +7,34 @@ from hmmlearn.base import _BaseHMM
 from mpl_toolkits.mplot3d import Axes3D
 import os
 
-import os,sys
-import subprocess
-import glob
-from os import path
+# import os,sys
+# import subprocess
+# import glob
+# from os import path
+
+import os.path
+save_path = 'C:\Users\Nunik Nurhayati\git\Fitting\150K300mVCurrent12until40n5'
+name_of_file = raw_input("What is the name of the file: output5")
+completeName = os.path.join(save_path, name_of_file+".txt")         
+file1 = open(completeName, "w")
+toFile = raw_input("Write what you want into the field")
+file1.write(toFile)
+file1.close()
+
+
+# import os
+# import errno
+#   
+# filename = "output4.txt"
+# if not os.path.exists(os.path.dirname(filename)):
+#     try:
+#         os.makedirs(os.path.dirname(filename))
+#     except OSError as exc: # Guard against race condition
+#         if exc.errno != errno.EEXIST:
+#             raise
+#  
+# with open(filename, "w") as f:
+#     f.write("FOOBAR")
 
 
 "INPUT"
@@ -31,11 +55,19 @@ results_dir = os.path.join(script_dir, '150K300mVCurrent12until40n5/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
-f = open('output.txt','w')
-sys.stdout = f
+save_path = 'C:/Users/Nunik Nurhayati/git/Fitting/150K300mVCurrent12until40n5/'
+name_of_file = raw_input("What is the name of the file: output5")
+completeName = os.path.join(save_path, name_of_file+".txt")         
+file1 = open(completeName, "w")
+toFile = raw_input("Write what you want into the field")
+file1.write(toFile)
+file1.close()
 
-path= 'C:\Users\Nunik Nurhayati\git\Fitting\77K300mVCurrent10n5'
-bamfiles = glob.glob(path + '/*.bam')
+# f = open('output3.txt','w')
+# sys.stdout = f
+
+# path= 'C:\Users\Nunik Nurhayati\git\Fitting\77K300mVCurrent10n5'
+# bamfiles = glob.glob(path + '/*.bam')
 
 
 "Import data from excel file"
