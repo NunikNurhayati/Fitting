@@ -41,7 +41,7 @@ sys.stdout = f
 "Import data from excel file"
 from xlrd import open_workbook
 book = open_workbook('Data6_RTV450mV.xlsx')
-sheet = book.sheet_by_index(7)
+sheet = book.sheet_by_index(1)
 
 "Input"
 #start_time
