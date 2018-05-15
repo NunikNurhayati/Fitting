@@ -18,30 +18,30 @@ import os,sys
 
 "INPUT"
 #number of state
-n = 16
+n = 5
 #covariance type
 covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "result__150K300mVCurrent12until40n%d" % n
-figname2 = "result__150K300mVCurrent12until40n16analysis1_3d_scatterplot"
-figname3 = "result__150K300mVCurrent12until40n16analysis1_colormapplot_1"
+figname1 = "result__histogram%d" % n
+figname2 = "result__histogramanalysis1_3d_scatterplot"
+figname3 = "result__histogramanalysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, '150K300mVCurrent12until40n16/')
+results_dir = os.path.join(script_dir, 'histogram/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
 "Output Data"
-f = open(results_dir + 'output3.txt','w')
+f = open(results_dir + 'histogram.txt','w')
 sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook
 book = open_workbook('Data2.xlsx')
-sheet = book.sheet_by_index(11)
+sheet = book.sheet_by_index(5)
 
 "Input"
 #start_time
@@ -178,8 +178,34 @@ for i in range(0,n):
 #     print("variance = ", np.diag(model.covars_[i]))
 #     print()
 
+# "Analysis 3: Histogram"
+# #value
+# means_state = []
+# means_state1 = []
+# for i in range(0,n):
+#     means_state.append(model.means_[i][0])
+#     means_state1.append(model.means_[i][0])
+# 
+# hist_state = []
+# for i in range(0,n):
+#     mm = min(means_state)
+#     mm_ind = means_state1.index(mm)
+#     means_state.remove(mm)
+#     hist_state.append([mm_ind,0])
+#     for j in range(0,len(result)):
+#         if result[j][3] == mm_ind:
+#             hist_state[-1][-1] += result[j][4]
+    
 
-"Print RESULT"
+
+"PRINT RESULT"
+print("Record data for histogram")
+print("**********************************")
+print("Hidden state {}th","           ","Mean","            ","Total time domain")
+for i in range(0,len(hist_state)):
+    print(hist_state[i][0], "                        ", model.means_[hist_state[i][0]][0], "         ", hist_state[i][1])
+
+print(" ")
 print(" ")
 print("Record of all hidden state")
 print("**********************************")
@@ -187,6 +213,17 @@ print("No.","   ","TIME Start"," - ","TIME End","    ","VALUE","         ","Hidd
 for i in range(0,len(result)):
     print(i, "    ",result[i][0], "    - ", result[i][1], "    ", result[i][2], "      ", result[i][3], "             ", result[i][4])
 
+
+# ##plot analysis 3: histogram
+# plt.figure(3)
+# plt.title("Histogram of total time domain")
+# vert_hist = np.histogram(sample, bins=30)
+# ax1 = plt.subplot(2, 1, 1)
+# ax1.plot(vert_hist[0], vert_hist[1][:-1], '*g')
+#  
+# ax2 = plt.subplot(2, 1, 2)
+# ax2.hist(sample, bins=30, orientation="horizontal");
+# plt.show()
 
 # "Print list pair of x_i,x_i+1"
 # print("record of list pair of x_i,x_i+1")
@@ -207,8 +244,7 @@ for i in range(model.n_components):
 #     print("variance = ", np.diag(model.covars_[i]))
     print()
    
-  
-"Plot data and result"
+"PLOT"
 x_plot = []
 y_plot = []
 for i in result:

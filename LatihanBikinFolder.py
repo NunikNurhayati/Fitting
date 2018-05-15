@@ -7,19 +7,19 @@ from hmmlearn.base import _BaseHMM
 from mpl_toolkits.mplot3d import Axes3D
 import os
 
-# import os,sys
+import os,sys
 # import subprocess
 # import glob
 # from os import path
 
-import os.path
-save_path = 'C:\Users\Nunik Nurhayati\git\Fitting\150K300mVCurrent12until40n5'
-name_of_file = raw_input("What is the name of the file: output5")
-completeName = os.path.join(save_path, name_of_file+".txt")         
-file1 = open(completeName, "w")
-toFile = raw_input("Write what you want into the field")
-file1.write(toFile)
-file1.close()
+# import os.path
+# save_path = 'C:\Users\Nunik Nurhayati\git\Fitting\150K300mVCurrent12until40n5'
+# name_of_file = raw_input("What is the name of the file: output5")
+# completeName = os.path.join(save_path, name_of_file+".txt")         
+# file1 = open(completeName, "w")
+# toFile = raw_input("Write what you want into the field")
+# file1.write(toFile)
+# file1.close()
 
 
 # import os
@@ -46,25 +46,25 @@ covar_type = "full"
 iterr = 1000
 #figure name
 figname1 = "result__150K300mVCurrent12until40n%d" % n
-figname2 = "result__150K300mVCurrent12until40n5analysis1_3d_scatterplot"
+# figname2 = "result__150K300mVCurrent12until40n5analysis1_3d_scatterplot"
 figname3 = "result__150K300mVCurrent12until40n5analysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, '150K300mVCurrent12until40n5/')
+results_dir = os.path.join(script_dir, 'coba-coba/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
-save_path = 'C:/Users/Nunik Nurhayati/git/Fitting/150K300mVCurrent12until40n5/'
-name_of_file = raw_input("What is the name of the file: output5")
-completeName = os.path.join(save_path, name_of_file+".txt")         
-file1 = open(completeName, "w")
-toFile = raw_input("Write what you want into the field")
-file1.write(toFile)
-file1.close()
+# save_path = 'C:/Users/Nunik Nurhayati/git/Fitting/150K300mVCurrent12until40n5/'
+# name_of_file = raw_input("What is the name of the file: coba-coba")
+# completeName = os.path.join(save_path, name_of_file+".txt")         
+# file1 = open(completeName, "w")
+# toFile = raw_input("Write what you want into the field")
+# file1.write(toFile)
+# file1.close()
 
-# f = open('output3.txt','w')
-# sys.stdout = f
+f = open(results_dir + 'coba-coba.txt','w')
+sys.stdout = f
 
 # path= 'C:\Users\Nunik Nurhayati\git\Fitting\77K300mVCurrent10n5'
 # bamfiles = glob.glob(path + '/*.bam')
@@ -136,14 +136,14 @@ x_i_plus = x_i[:]
 del x_i[-1] #remove last element 
 x_i_plus.pop(0) #remove first element
   
-##Create pair of hidden state
-# ##1 based on hidden state vestor
-# X_i = x_i[:]
-# X_i_plus = x_i_plus[:]
-# pairr = [[x_i[0],x_i_plus[0]]]
-# for j in range(1, len(x_i)):
-#     if [x_i[j],x_i_plus[j]] not in pairr:
-#         pairr.append([x_i[j],x_i_plus[j]])
+# #Create pair of hidden state
+#  ##1 based on hidden state vestor
+#  X_i = x_i[:]
+#  X_i_plus = x_i_plus[:]
+#  pairr = [[x_i[0],x_i_plus[0]]]
+#  for j in range(1, len(x_i)):
+#      if [x_i[j],x_i_plus[j]] not in pairr:
+#          pairr.append([x_i[j],x_i_plus[j]])
           
 ##2 based on combination of hidden state
 X_i = []
@@ -197,18 +197,18 @@ for i in range(0,n):
             analysis_2[-1][1] += 1
             analysis_2[-1][2] += j[4]
   
-# "Print All hidden state parameter"
-# print("Transition matrix")
-# print(model.transmat_)
-# print()
-# 
-# print("Means and Variance of each hidden state")
-# 
-# for i in range(model.n_components):
-#     print("{0}th hidden state".format(i))
-#     print("mean = ", model.means_[i])
-#     print("variance = ", np.diag(model.covars_[i]))
-#     print()
+"Print All hidden state parameter"
+print("Transition matrix")
+print(model.transmat_)
+print()
+ 
+print("Means and Variance of each hidden state")
+ 
+for i in range(model.n_components):
+    print("{0}th hidden state".format(i))
+    print("mean = ", model.means_[i])
+    print("variance = ", np.diag(model.covars_[i]))
+    print()
 
 
 "Print RESULT"
@@ -220,13 +220,13 @@ for i in range(0,len(result)):
     print(i, "    ",result[i][0], "    - ", result[i][1], "    ", result[i][2], "      ", result[i][3], "             ", result[i][4])
 
 
-# "Print list pair of x_i,x_i+1"
-# print("record of list pair of x_i,x_i+1")
-# print("hidden_states original", hidden_states)
-# print('x_i     ', x_i3)
-# print('x_i_plus', x_i3_plus)            
-# print('list of [x_i,x_i_plus]', pairr)
-# print('List of [[x_i,x_i_plus], number of repetition]', density3)
+"Print list pair of x_i,x_i+1"
+print("record of list pair of x_i,x_i+1")
+print("hidden_states original", hidden_states)
+print('x_i     ', x_i3)
+print('x_i_plus', x_i3_plus)            
+print('list of [x_i,x_i_plus]', pairr)
+print('List of [[x_i,x_i_plus], number of repetition]', density3)
 
 print(" ")
 print("Means and total domain of each hidden state")
@@ -259,22 +259,22 @@ plt.show()
   
 "Plot Analysis 3"
 ##3D scatter plot
-plt.figure(2)
-plt.title("Hidden state mapping")
-fig = plt.figure(2)
-ax = fig.gca(projection='3d')
-for i in range(0,len(density)):
-    if density[i][1] != 0:
-        ax.scatter(density[i][0][0],density[i][0][1],density[i][1],color='b') 
-        ax.text(density[i][0][0],density[i][0][1],density[i][1],  '(%s,%s)%s' % (str(density[i][0][0]),str(density[i][0][1]),str(density[i][1])), size=7, zorder=1,  
- color='k') 
-# for i,j,k in zip(xx,yy,zz):
-#     ax.annotate(str(zz),xyz=(i,j,k))
-ax.set_xlabel('Hidden State')
-ax.set_ylabel('Hidden State')
-ax.set_zlabel('Number')
-plt.savefig(results_dir + "%s.png" % figname2)
-plt.close()
+# plt.figure(2)
+# plt.title("Hidden state mapping")
+# fig = plt.figure(2)
+# ax = fig.gca(projection='3d')
+# for i in range(0,len(density)):
+#     if density[i][1] != 0:
+#         ax.scatter(density[i][0][0],density[i][0][1],density[i][1],color='b') 
+#         ax.text(density[i][0][0],density[i][0][1],density[i][1],  '(%s,%s)%s' % (str(density[i][0][0]),str(density[i][0][1]),str(density[i][1])), size=7, zorder=1,  
+#  color='k') 
+# # for i,j,k in zip(xx,yy,zz):
+# #     ax.annotate(str(zz),xyz=(i,j,k))
+# ax.set_xlabel('Hidden State')
+# ax.set_ylabel('Hidden State')
+# ax.set_zlabel('Number')
+# plt.savefig(results_dir + "%s.png" % figname2)
+# plt.close()
  
 ##colormap plot_1
 zz3 = np.asarray(zz3)
