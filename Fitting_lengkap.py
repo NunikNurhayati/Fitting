@@ -24,24 +24,24 @@ covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "result__150K300mVCurrent12until40n%d" % n
-figname2 = "result__150K300mVCurrent12until40n16analysis1_3d_scatterplot"
-figname3 = "result__150K300mVCurrent12until40n16analysis1_colormapplot_1"
+figname1 = "RTV100mVCurrent6;100-200sn%d" % n
+# figname2 = "result__foldernameanalysis1_3d_scatterplot"
+figname3 = "RTV100mVCurrent6;100-200s;n16analysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, '150K300mVCurrent12until40n16/')
+results_dir = os.path.join(script_dir, 'RTV100mVCurrent6;100-200s;n16/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
 "Output Data"
-f = open(results_dir + 'output3.txt','w')
+f = open(results_dir + 'RTV100mVCurrent6;100-200s;n16;output.txt','w')
 sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook
-book = open_workbook('Data2.xlsx')
-sheet = book.sheet_by_index(11)
+book = open_workbook('Data4_RTV100mV.xlsx')
+sheet = book.sheet_by_index(10)
 
 "Input"
 #start_time
@@ -227,22 +227,22 @@ plt.show()
   
 "Plot Analysis 3"
 ##3D scatter plot
-plt.figure(2)
-plt.title("Hidden state mapping")
-fig = plt.figure(2)
-ax = fig.gca(projection='3d')
-for i in range(0,len(density)):
-    if density[i][1] != 0:
-        ax.scatter(density[i][0][0],density[i][0][1],density[i][1],color='b') 
-        ax.text(density[i][0][0],density[i][0][1],density[i][1],  '(%s,%s)%s' % (str(density[i][0][0]),str(density[i][0][1]),str(density[i][1])), size=7, zorder=1,  
- color='k') 
-# for i,j,k in zip(xx,yy,zz):
-#     ax.annotate(str(zz),xyz=(i,j,k))
-ax.set_xlabel('Hidden State')
-ax.set_ylabel('Hidden State')
-ax.set_zlabel('Number')
-plt.savefig(results_dir + "%s.png" % figname2)
-plt.close()
+# plt.figure(2)
+# plt.title("Hidden state mapping")
+# fig = plt.figure(2)
+# ax = fig.gca(projection='3d')
+# for i in range(0,len(density)):
+#     if density[i][1] != 0:
+#         ax.scatter(density[i][0][0],density[i][0][1],density[i][1],color='b') 
+#         ax.text(density[i][0][0],density[i][0][1],density[i][1],  '(%s,%s)%s' % (str(density[i][0][0]),str(density[i][0][1]),str(density[i][1])), size=7, zorder=1,  
+#  color='k') 
+# # for i,j,k in zip(xx,yy,zz):
+# #     ax.annotate(str(zz),xyz=(i,j,k))
+# ax.set_xlabel('Hidden State')
+# ax.set_ylabel('Hidden State')
+# ax.set_zlabel('Number')
+# plt.savefig(results_dir + "%s.png" % figname2)
+# plt.close()
  
 ##colormap plot_1
 zz3 = np.asarray(zz3)
