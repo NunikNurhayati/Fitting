@@ -24,30 +24,30 @@ covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "RTV75mVCurrent16;900-endsn%d" % n
+figname1 = "RTV50mVCurrent24;0-100sn%d" % n
 # figname2 = "result__foldernameanalysis1_3d_scatterplot"
-figname3 = "RTVRTV75mVCurrent16;900-ends;n16analysis1_colormapplot_1"
+figname3 = "RTV50mVCurrent24;0-100s;n16analysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, 'RTV75mVCurrent16;900-ends;n16/')
+results_dir = os.path.join(script_dir, 'RTV50mVCurrent24;0-100s;n16/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
 "Output Data"
-f = open(results_dir + 'RTV75mVCurrent16;900-ends;n16;output.txt','w')
+f = open(results_dir + 'RTV50mVCurrent24;0-100s;n16;output.txt','w')
 sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook
-book = open_workbook('Data8_RTV75mV.xlsx')
-sheet = book.sheet_by_index(5)
+book = open_workbook('Data9_RTV50mV.xlsx')
+sheet = book.sheet_by_index(8)
 
 "Input"
 #start_time
-start_t = 89978
+start_t = 0
 #end_time
-end_t = sheet.nrows
+end_t = 9997
 
 x = []
 y = []
