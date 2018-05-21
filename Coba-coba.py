@@ -18,30 +18,30 @@ import os,sys
 
 "INPUT"
 #number of state
-n = 5
+n = 16
 #covariance type
 covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "result__histogram%d" % n
-figname2 = "result__histogramanalysis1_3d_scatterplot"
-figname3 = "result__histogramanalysis1_colormapplot_1"
+figname1 = "130K300mVCurrent3;142-172sn%d" % n
+# figname2 = "result__foldernameanalysis1_3d_scatterplot"
+figname3 = "130K300mVCurrent3;142-172s;n16analysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, 'histogram/')
+results_dir = os.path.join(script_dir, 'coba3/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
 "Output Data"
-f = open(results_dir + 'histogram.txt','w')
+f = open(results_dir + 'RTV300mVCurrent1;300-400s;n16;output.txt','w')
 sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook
 book = open_workbook('Data2.xlsx')
-sheet = book.sheet_by_index(5)
+sheet = book.sheet_by_index(2)
 
 "Input"
 #start_time
@@ -122,10 +122,12 @@ XY = []
 for i in range(0,n):
     X_i.append(i)
 pairr = []
+pair_m = []
 for i in range(0, n):
     XY.append(str(model.means_[i][0]))
     for j in range(0, n):
         pairr.append([i,j])
+        pair_m.append([model.means_[i][0],model.means_[j][0]])
         xx.append(i)
         yy.append(j)
           
@@ -150,11 +152,18 @@ x_i3_plus.pop(0) #remove first element
  
 density3 = []
 for j in range(0, len(pairr)):
-    density3.append([pairr[j],0])
+    density3.append([pair_m[j],0])
     for k in range(0, len(x_i3)):
         if pairr[j][0] == x_i3[k] and pairr[j][1] == x_i3_plus[k]:
             density3[-1][-1] += 1
     zz3.append(density3[-1][-1])
+    
+print(" ")
+print("Record of data hidden state")
+print("**********************************")
+print("No.","   ","mean of X"," - ","mean of Y","    ","#Number")
+for i in range(0,len(density3)):
+    print(i, "    ",density3[i][0][0], "    - ", density3[i][0][1], "    ", density3[i][1])
   
 "Analysis 2 : Total time domain"
 analysis_2 = []
@@ -178,34 +187,8 @@ for i in range(0,n):
 #     print("variance = ", np.diag(model.covars_[i]))
 #     print()
 
-"Analysis 3: Histogram"
-#value
-means_state = []
-means_state1 = []
-for i in range(0,n):
-    means_state.append(model.means_[i][0])
-    means_state1.append(model.means_[i][0])
- 
-hist_state = []
-for i in range(0,n):
-    mm = min(means_state)
-    mm_ind = means_state1.index(mm)
-    means_state.remove(mm)
-    hist_state.append([mm_ind,0])
-    for j in range(0,len(result)):
-        if result[j][3] == mm_ind:
-            hist_state[-1][-1] += result[j][4]
-    
 
-
-"PRINT RESULT"
-print("Record data for histogram")
-print("**********************************")
-print("Hidden state {}th","           ","Mean","            ","Total time domain")
-for i in range(0,len(hist_state)):
-    print(hist_state[i][0], "                        ", model.means_[hist_state[i][0]][0], "         ", hist_state[i][1])
-
-print(" ")
+"Print RESULT"
 print(" ")
 print("Record of all hidden state")
 print("**********************************")
@@ -214,24 +197,13 @@ for i in range(0,len(result)):
     print(i, "    ",result[i][0], "    - ", result[i][1], "    ", result[i][2], "      ", result[i][3], "             ", result[i][4])
 
 
-# ##plot analysis 3: histogram
-# plt.figure(3)
-# plt.title("Histogram of total time domain")
-# vert_hist = np.histogram(sample, bins=30)
-# ax1 = plt.subplot(2, 1, 1)
-# ax1.plot(vert_hist[0], vert_hist[1][:-1], '*g')
-#  
-# ax2 = plt.subplot(2, 1, 2)
-# ax2.hist(sample, bins=30, orientation="horizontal");
-# plt.show()
-
-# "Print list pair of x_i,x_i+1"
-# print("record of list pair of x_i,x_i+1")
-# print("hidden_states original", hidden_states)
-# print('x_i     ', x_i3)
-# print('x_i_plus', x_i3_plus)            
-# print('list of [x_i,x_i_plus]', pairr)
-# print('List of [[x_i,x_i_plus], number of repetition]', density3)
+"Print list pair of x_i,x_i+1"
+print("record of list pair of x_i,x_i+1")
+print("hidden_states original", hidden_states)
+print('x_i     ', x_i3)
+print('x_i_plus', x_i3_plus)            
+print('list of [x_i,x_i_plus]', pairr)
+print('List of [[x_i,x_i_plus], number of repetition]', density3)
 
 print(" ")
 print("Means and total domain of each hidden state")
@@ -244,7 +216,8 @@ for i in range(model.n_components):
 #     print("variance = ", np.diag(model.covars_[i]))
     print()
    
-"PLOT"
+  
+"Plot data and result"
 x_plot = []
 y_plot = []
 for i in result:
@@ -263,22 +236,22 @@ plt.show()
   
 "Plot Analysis 3"
 ##3D scatter plot
-plt.figure(2)
-plt.title("Hidden state mapping")
-fig = plt.figure(2)
-ax = fig.gca(projection='3d')
-for i in range(0,len(density)):
-    if density[i][1] != 0:
-        ax.scatter(density[i][0][0],density[i][0][1],density[i][1],color='b') 
-        ax.text(density[i][0][0],density[i][0][1],density[i][1],  '(%s,%s)%s' % (str(density[i][0][0]),str(density[i][0][1]),str(density[i][1])), size=7, zorder=1,  
- color='k') 
-# for i,j,k in zip(xx,yy,zz):
-#     ax.annotate(str(zz),xyz=(i,j,k))
-ax.set_xlabel('Hidden State')
-ax.set_ylabel('Hidden State')
-ax.set_zlabel('Number')
-plt.savefig(results_dir + "%s.png" % figname2)
-plt.close()
+# plt.figure(2)
+# plt.title("Hidden state mapping")
+# fig = plt.figure(2)
+# ax = fig.gca(projection='3d')
+# for i in range(0,len(density)):
+#     if density[i][1] != 0:
+#         ax.scatter(density[i][0][0],density[i][0][1],density[i][1],color='b') 
+#         ax.text(density[i][0][0],density[i][0][1],density[i][1],  '(%s,%s)%s' % (str(density[i][0][0]),str(density[i][0][1]),str(density[i][1])), size=7, zorder=1,  
+#  color='k') 
+# # for i,j,k in zip(xx,yy,zz):
+# #     ax.annotate(str(zz),xyz=(i,j,k))
+# ax.set_xlabel('Hidden State')
+# ax.set_ylabel('Hidden State')
+# ax.set_zlabel('Number')
+# plt.savefig(results_dir + "%s.png" % figname2)
+# plt.close()
  
 ##colormap plot_1
 zz3 = np.asarray(zz3)
