@@ -112,4 +112,87 @@ for f in foods[:2]:
 print("")
 print("making range")
 print("------------")
+
+for x in range(10):
+    print(x)
     
+for x in range(10):
+    print("Nunik is awesome")
+    
+for x in range(5, 12):
+    print(x)
+    
+print("---------------")
+for x in range(10, 40, 5): #10 sampe 40 @erkelipatan 5
+    print(x)
+    
+print("")
+print("while loop")
+print("-----------")
+    
+nunik = 5
+while nunik < 10:
+    print(nunik)
+    nunik += 1 #kalo tanpa nunik +=1 maka akan muncul 5 forever (infinitive loop)
+
+print("-----------")
+
+magicNumber = 26
+
+print(7, "Nunik")
+
+for n in range(101):
+    if n is magicNumber:
+        print(n, " is the magic number.")
+print("-----------")
+for n in range(101):
+    if n is magicNumber:
+        print(n, " is the magic number.")
+        break #sto@p the loop, sehingga 27 28 dst ga terprint
+    else:
+        print(n)
+print("-----------")
+numbersTaken = [2, 5, 12, 13, 17]
+
+print("Here are the numbers that are still available:")
+#menit 1.16.32
+for n in range(1, 20):
+    if n in numbersTaken:
+        continue
+    print(n)
+print("-----------")
+
+print("function")
+
+def beef():
+    print("Dayum, fuction are cool.")
+    
+beef() #tanpa ini, maka print ga akan muncul
+beef()
+beef()
+
+def beef():
+    print("Dayum, fuction are cool.")
+    
+def bitcoin_to_usd(btc):
+    amount = btc * 527
+    print(amount)
+
+beef() #hasilnya Dayum, fuction are cool.
+bitcoin_to_usd(3.85) #hasilnya 2028.95
+bitcoin_to_usd(13)
+print("-----------")
+print("calculation")
+print("")
+
+def allowed_dating_age(my_age):
+    girls_age = my_age/2. + 7 #ditambahin dot biar hasilnya desimal (20.5)
+    return girls_age
+buckys_limit = allowed_dating_age(27)
+creepys_limit = allowed_dating_age(49)
+print(buckys_limit)
+print("Bucky can date girls", buckys_limit, "or older")
+print("Creepy can date girls", creepys_limit, "or older")
+
+
+
