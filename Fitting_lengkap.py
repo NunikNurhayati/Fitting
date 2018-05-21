@@ -35,13 +35,13 @@ if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
 "Output Data"
-f = open(results_dir + '130K300mVCurrent3;142-172s;n16;output.txt','w')
+f = open(results_dir + 'RTV300mVCurrent1;300-400s;n16;output.txt','w')
 sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook
-book = open_workbook('Data2.xlsx')
-sheet = book.sheet_by_index(21)
+book = open_workbook('Data3_RTV300mV.xlsx')
+sheet = book.sheet_by_index(0)
 
 "Input"
 #start_time
