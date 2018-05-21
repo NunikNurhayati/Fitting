@@ -194,6 +194,17 @@ print(buckys_limit)
 print("Bucky can date girls", buckys_limit, "or older")
 print("Creepy can date girls", creepys_limit, "or older")
 print("-----------")
-
-
+print("argument")
+print("-----------")
+def get_gender(sex='Unknown'):
+    if sex is 'm':
+        sex = "Male"
+    elif sex is 'f':
+        sex ="female"
+    print(sex)
+    
+get_gender('m')
+get_gender('f')
+get_gender()
+    
 
