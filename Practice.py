@@ -193,6 +193,7 @@ creepys_limit = allowed_dating_age(49)
 print(buckys_limit)
 print("Bucky can date girls", buckys_limit, "or older")
 print("Creepy can date girls", creepys_limit, "or older")
+print("-----------")
 
 
 
