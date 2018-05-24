@@ -30,12 +30,12 @@ figname3 = "130K300mVCurrent3;142-172s;n16analysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, 'coba3/')
+results_dir = os.path.join(script_dir, 'coba6csv/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
 "Output Data"
-f = open(results_dir + 'RTV300mVCurrent1;300-400s;n16;output.txt','w')
+f = open(results_dir + 'RTV300mVCurrent1;300-400s;n16;output.csv','w')
 sys.stdout = f
 
 "Import data from excel file"
@@ -162,8 +162,27 @@ print(" ")
 print("Record of data hidden state")
 print("**********************************")
 print("No.","   ","mean of X"," - ","mean of Y","    ","#Number")
+# for i in range(0,len(density3)):
+#     print(i, "    ",density3[i][0][0], "    - ", density3[i][0][1], "    ", density3[i][1])
+ 
+print("-----------------------------------")
+print("mean of X")
+print("-----------------------------------")    
 for i in range(0,len(density3)):
-    print(i, "    ",density3[i][0][0], "    - ", density3[i][0][1], "    ", density3[i][1])
+    print(density3[i][0][0])
+ 
+print("-----------------------------------")
+print("mean of Y")
+for i in range(0,len(density3)):
+    print(density3[i][0][1])
+ 
+print("-----------------------------------")
+print("Number")
+for i in range(0,len(density3)):
+    print(density3[i][1])
+
+##For CSV data
+
   
 "Analysis 2 : Total time domain"
 analysis_2 = []

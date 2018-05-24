@@ -19,8 +19,8 @@ print(__doc__)
 
 "Import data from excel"
 from xlrd import open_workbook
-book = open_workbook('data.xlsx')
-sheet = book.sheet_by_index(0)
+book = open_workbook('Data2.xlsx')
+sheet = book.sheet_by_index(1)
 
 time_x = []
 current_y = []
