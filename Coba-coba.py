@@ -24,30 +24,30 @@ covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "130K300mVCurrent3;142-172sn%d" % n
+figname1 = "50KCurrent12n%d" % n
 # figname2 = "result__foldernameanalysis1_3d_scatterplot"
-figname3 = "130K300mVCurrent3;142-172s;n16analysis1_colormapplot_1"
+figname3 = "50KCurrent12;n16analysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, 'coba6csv/')
+results_dir = os.path.join(script_dir, '77KCurrent2/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
 "Output Data"
-f = open(results_dir + 'RTV300mVCurrent1;300-400s;n16;output.csv','w')
+f = open(results_dir + '77KCurrent2;n16;output.txt','w')
 sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook
-book = open_workbook('Data2.xlsx')
-sheet = book.sheet_by_index(2)
+book = open_workbook('Data_77K300mV.xlsx')
+sheet = book.sheet_by_index(1)
 
 "Input"
 #start_time
 start_t = 0
 #end_time
-end_t = sheet.nrows
+end_t = 34825
 
 x = []
 y = []
