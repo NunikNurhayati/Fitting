@@ -24,30 +24,30 @@ covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "77KCurrent12n%d" % n
+figname1 = "150KCurrent11n%d" % n
 # figname2 = "result__foldernameanalysis1_3d_scatterplot"
-figname3 = "77KCurrent12;n16analysis1_colormapplot_1"
+figname3 = "150KCurrent11;n16analysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, '77KCurrent12-2/')
+results_dir = os.path.join(script_dir, '150KCurrent11/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
 "Output Data"
-f = open(results_dir + '77KCurrent12;n16;output.txt','w')
+f = open(results_dir + '150KCurrent11;n16;output.txt','w')
 sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook
-book = open_workbook('Data_77K300mV.xlsx')
+book = open_workbook('Data_150K300mV.xlsx')
 sheet = book.sheet_by_index(4)
 
 "Input"
 #start_time
 start_t = 0
 #end_time
-end_t = 25935
+end_t = 19504
 
 x = []
 y = []
