@@ -18,7 +18,7 @@ import os,sys
 
 "INPUT"
 #number of state
-n = 16
+n = 5
 #covariance type
 covar_type = "full"
 #number of iteration
@@ -224,8 +224,8 @@ for j in range(0, len(pairr)):
             density3[-1][-1] += 1
     zz3.append(density3[-1][-1])
 
-print(zz3)
-print(density3)
+# print(zz3)
+# print(density3)
     
 print(" ")
 print("Record of data hidden state")
@@ -274,22 +274,22 @@ for i in range(0,n):
 #     print()
 
 
-"Print RESULT"
-print(" ")
-print("Record of all hidden state")
-print("**********************************")
-print("No.","   ","TIME Start"," - ","TIME End","    ","VALUE","         ","Hidden State {}th","     ","Time domain")
-for i in range(0,len(result)):
-    print(i, "    ",result[i][0], "    - ", result[i][1], "    ", result[i][2], "      ", result[i][3], "             ", result[i][4])
-
-
-"Print list pair of x_i,x_i+1"
-print("record of list pair of x_i,x_i+1")
-print("hidden_states original", hidden_states)
-print('x_i     ', x_i3)
-print('x_i_plus', x_i3_plus)            
-print('list of [x_i,x_i_plus]', pairr)
-print('List of [[x_i,x_i_plus], number of repetition]', density3)
+# "Print RESULT"
+# print(" ")
+# print("Record of all hidden state")
+# print("**********************************")
+# print("No.","   ","TIME Start"," - ","TIME End","    ","VALUE","         ","Hidden State {}th","     ","Time domain")
+# for i in range(0,len(result)):
+#     print(i, "    ",result[i][0], "    - ", result[i][1], "    ", result[i][2], "      ", result[i][3], "             ", result[i][4])
+# 
+# 
+# "Print list pair of x_i,x_i+1"
+# print("record of list pair of x_i,x_i+1")
+# print("hidden_states original", hidden_states)
+# print('x_i     ', x_i3)
+# print('x_i_plus', x_i3_plus)            
+# print('list of [x_i,x_i_plus]', pairr)
+# print('List of [[x_i,x_i_plus], number of repetition]', density3)
 
 print(" ")
 print("Means and total domain of each hidden state")
@@ -302,9 +302,6 @@ for i in range(model.n_components):
 #     print("variance = ", np.diag(model.covars_[i]))
     print()
  
-
-   
-  
 "Plot data and result"
 x_plot = []
 y_plot = []
