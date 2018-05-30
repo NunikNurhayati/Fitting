@@ -30,7 +30,7 @@ figname3 = "result__histogramanalysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, 'histogram3/')
+results_dir = os.path.join(script_dir, 'histogram4/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
