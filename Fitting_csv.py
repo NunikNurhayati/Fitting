@@ -30,7 +30,7 @@ figname3 = "result__histogramanalysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, 'histogram2/')
+results_dir = os.path.join(script_dir, 'histogram3/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
@@ -207,9 +207,20 @@ for i in range(0,n):
 
 "For 2d Histogram in order hidden states"
 hist_ordered = []
-for i in range(0,len(hist_state)):
+for i in range(0,n):
     hist_ordered.append(model.means_[hist_state[i][0]][0])
-print(hist_ordered)
+print("hist_ordered", hist_ordered)
+
+number_ordered = []
+for i in range(0,len(hist_ordered)):
+    number_ordered.append(100 + i)
+print("number ordered", number_ordered)
+
+pair_ordered = []
+for i in range(0,len(hist_state)):
+    pair_ordered.append([hist_state[i][0],model.means_[hist_state[i][0]][0]])
+print("pair_ordered", pair_ordered)
+
 
 "PRINT RESULT"
 print("Record data for histogram")

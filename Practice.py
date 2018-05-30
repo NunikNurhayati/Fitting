@@ -207,4 +207,93 @@ get_gender('m')
 get_gender('f')
 get_gender()
     
+print("-----------")
+print("Variable scope")
+
+a = 7823 #a di luar shg milik siapapun
+def corn():
+    print(a)
+
+def fudge():
+    print(a)
+
+corn()
+fudge()
+
+def corn():
+    a = 7823 #kalo a nya di dlm sini, maka hanya milik corn.
+    print(a)
+
+def fudge():
+    print(a)
+
+corn()
+fudge()
+
+print("-----------")
+print("keyword argument")
+
+def dumb_sentence(name='Bucky', action='ate', item='tuna'):
+    print(name, action, item)
+dumb_sentence()
+dumb_sentence("Sally", "farts", "gently")
+dumb_sentence(item='awesome')
+dumb_sentence(item='awesome', action='is')
+
+print("-----------")
+print("flexible action  of the argument")
+
+def add_number(*args): #*agrs bisa diganti *tuna atau apapun
+    total = 0
+    for a in args:
+        total += a
+    print(total)
+    
+add_number(3)
+add_number(3, 32)
+add_number(3, 43, 5453, 354534, 463463)
+
+print("-----------")
+print("calculator")
+
+def health_calculator(age, apples_ate, cigs_smoked):
+    answer = (100-age) + (apples_ate * 3.5) - (cigs_smoked * 2)
+    print(answer)
+    
+bucky_data = [27, 20, 0]
+
+health_calculator(bucky_data[0], bucky_data[1], bucky_data[2])
+health_calculator(*bucky_data) #cara cepat untuk mengeprint tinggal tambah * di depan
+
+print("-----------")
+print("enumerate")
+schedule = ["makan", "minum", "belajar", "tidur", "main", "nonton","masak", "menyanyi"]
+for count, elem in enumerate(schedule):
+    print count, elem
+
+print("-----------")
+print("banyak element dan elemen terakhir")
+print(count, elem)
+
+print("-----------")
+for count, elem in enumerate(schedule, 21):
+    print count, elem
+
+print("-----------")
+print("banyak element dan elemen terakhir")
+print(count, elem)
+
+print("-----------")
+print("set")
+groceries = {'cereal', 'milk', 'buah', 'sayur', 'jus', 'kosmetik', 'jus'} #jus cuma sekali terprint
+print(groceries)
+
+if 'milk' in groceries:
+    print("You have already had milk.")
+else:
+    print("You have to buy milk.")
+
+print("-----------")
+print("dictionary in python")
+
 

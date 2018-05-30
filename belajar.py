@@ -89,12 +89,17 @@ for ind, i in enumerate(hidden_states):
         else:
             result.append([result[-1][1]+1,ind-1,test, test,0])
         test = i
+
+print (ind, i)
+
 for i in range(0,len(result)):
     result[i][0] = x[result[i][0]]
     result[i][1] = x[result[i][1]]
     result[i][2] = model.means_[result[i][2]][0]
     result[i][4] = result[i][1] - result[i][0]
-  
+
+print("::::::::::::")
+
 "Analysis 1: x_i affects x_i+1 for x_i is hidden state in result"
 x_i = []
 for i in result:
@@ -160,3 +165,4 @@ for j in range(0, len(pairr)):
 
 
 print(len(x_i3))
+print(x_i3)
