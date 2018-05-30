@@ -18,30 +18,30 @@ import os,sys
 
 "INPUT"
 #number of state
-n = 5
+n = 16
 #covariance type
 covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "RTV600mVCurrent9n%d" % n
+figname1 = "RTV600mVCurrent4n%d" % n
 # figname2 = "result__foldernameanalysis1_3d_scatterplot"
-figname3 = "RTV600mVCurrent9;n16analysis1_colormapplot_1"
+figname3 = "RTV600mVCurrent4;n16analysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, 'HH4/')
+results_dir = os.path.join(script_dir, 'RTV600mVCurrent4/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
 "Output Data"
-f = open(results_dir + 'RTV600mVCurrent9;n16;output.txt','w')
+f = open(results_dir + 'RTV600mVCurrent4;n16;output.txt','w')
 sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook
-book = open_workbook('Data2.xlsx')
-sheet = book.sheet_by_index(4)
+book = open_workbook('Data_RTV600mV.xlsx')
+sheet = book.sheet_by_index(1)
 
 "Input"
 #start_time
@@ -177,6 +177,7 @@ for i in range(0,n):
     ind_mean_of_hiddenstates.append([mm_ind,model.means_[mm_ind][0]])
 
 "PRINT RESULT"
+print(" ")
 print("Record data for histogram")
 print("**********************************")
 print("Hidden state {}th","           ","Mean")
@@ -342,7 +343,7 @@ plt.show()
 zz3 = np.asarray(zz3)
 Z3 = zz3.reshape(n, n)
 fig, ax = plt.subplots()
-im = ax.imshow(Z3,cmap='prism',origin='lower',interpolation='bilinear')
+im = ax.imshow(Z3,cmap='nipy_spectral',origin='lower',interpolation='bilinear')
 # We want to show all ticks...
 ax.set_xticks(np.arange(len(XY)))
 ax.set_yticks(np.arange(len(XY)))

@@ -1,8 +1,0 @@
-Number of Rows
---------------
-9876
- 
-Hidden States
--------------
-[0 0 0 ... 0 0 0]
-<type 'numpy.ndarray'>
