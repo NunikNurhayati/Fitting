@@ -7,7 +7,8 @@ from hmmlearn.hmm import GaussianHMM, GMMHMM
 from hmmlearn.base import _BaseHMM
 from mpl_toolkits.mplot3d import Axes3D
 import os
-
+# from matplotlib.colors import LogNorm
+import math
 
 "To call function of output Data"
 import os,sys
@@ -18,7 +19,7 @@ import os,sys
 
 "INPUT"
 #number of state
-n = 5
+n = 16
 #covariance type
 covar_type = "full"
 #number of iteration
@@ -30,7 +31,7 @@ figname3 = "result__histogramanalysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, 'histogram4/')
+results_dir = os.path.join(script_dir, 'histogram5/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
@@ -40,12 +41,12 @@ sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook
-book = open_workbook('Data2.xlsx')
-sheet = book.sheet_by_index(5)
+book = open_workbook('Data_RTV150mV.xlsx')
+sheet = book.sheet_by_index(4)
 
 "Input"
 #start_time
-start_t = 0
+start_t = 95000
 #end_time
 end_t = sheet.nrows
 
@@ -307,8 +308,15 @@ plt.close()
 ##colormap plot_1
 zz3 = np.asarray(zz3)
 Z3 = zz3.reshape(n, n)
+
+##mau bikin log scale masih blm
+# for i in range(len(XY)):
+#     for j in range(len(XY)):
+#         if Z3[i, j] != 0:
+#             logOfFrequencies = map(math.log, Z3)
+            
 fig, ax = plt.subplots()
-im = ax.imshow(Z3,cmap='nipy_spectral',origin='lower',interpolation='bilinear')
+im = ax.imshow(Z3,cmap='nipy_spectral_r',origin='lower',interpolation='bilinear')
 # We want to show all ticks...
 ax.set_xticks(np.arange(len(XY)))
 ax.set_yticks(np.arange(len(XY)))
@@ -318,11 +326,12 @@ ax.set_yticklabels(XY)
 
 # Rotate the tick labels and set their alignment.
 plt.setp(ax.get_xticklabels(), rotation=45, ha="right",rotation_mode="anchor")
- 
+
 # Loop over data dimensions and create text annotations.
 for i in range(len(XY)):
     for j in range(len(XY)):
         if Z3[i, j] != 0:
-            text = ax.text(j, i, Z3[i, j],ha="center", va="center", color="w")
+            text = ax.text(j, i, Z3[i, j],ha="center", va="center", color="black", fontsize=7)            
+
 plt.savefig(results_dir + "%s.png" % figname3)
 plt.show()

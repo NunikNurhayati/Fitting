@@ -24,30 +24,30 @@ covar_type = "full"
 #number of iteration
 iterr = 1000
 #figure name
-figname1 = "RTV600mVCurrent4n%d" % n
+figname1 = "77K300mVCurrent8n%d" % n
 # figname2 = "result__foldernameanalysis1_3d_scatterplot"
-figname3 = "RTV600mVCurrent4;n16analysis1_colormapplot_1"
+figname3 = "77K300mVCurrent8;n16analysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, 'RTV600mVCurrent4/')
+results_dir = os.path.join(script_dir, '77K300mVCurrent8/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
 "Output Data"
-f = open(results_dir + 'RTV600mVCurrent4;n16;output.txt','w')
+f = open(results_dir + '77K300mVCurrent8;n16;output.txt','w')
 sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook
-book = open_workbook('Data_RTV600mV.xlsx')
-sheet = book.sheet_by_index(1)
+book = open_workbook('Data_77K300mV.xlsx')
+sheet = book.sheet_by_index(2)
 
 "Input"
 #start_time
 start_t = 0
 #end_time
-end_t = sheet.nrows
+end_t = 14442
 
 x = []
 y = []
@@ -204,8 +204,8 @@ for i in h_s_o:
         pairr.append([i,j])
         pair_m.append([model.means_[i][0],model.means_[j][0]])
 
-print(pairr)
-print(pair_m)
+# print(pairr)
+# print(pair_m)
         
 x_i3 = hidden_states[:]
 x_i3 = x_i3.tolist()
@@ -343,7 +343,7 @@ plt.show()
 zz3 = np.asarray(zz3)
 Z3 = zz3.reshape(n, n)
 fig, ax = plt.subplots()
-im = ax.imshow(Z3,cmap='nipy_spectral',origin='lower',interpolation='bilinear')
+im = ax.imshow(Z3,cmap='nipy_spectral_r',origin='lower',interpolation='bilinear')
 # We want to show all ticks...
 ax.set_xticks(np.arange(len(XY)))
 ax.set_yticks(np.arange(len(XY)))
@@ -358,6 +358,6 @@ plt.setp(ax.get_xticklabels(), rotation=45, ha="right",rotation_mode="anchor")
 for i in range(len(XY)):
     for j in range(len(XY)):
         if Z3[i, j] != 0:
-            text = ax.text(j, i, Z3[i, j],ha="center", va="center", color="w")
+            text = ax.text(j, i, Z3[i, j],ha="center", va="center", color="black", fontsize=7)
 plt.savefig(results_dir + "%s.png" % figname3)
 plt.show()
