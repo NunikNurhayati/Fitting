@@ -40,8 +40,8 @@ sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook
-book = open_workbook('Data3_RTV300mV.xlsx')
-sheet = book.sheet_by_index(0)
+book = open_workbook('Data3_RTV150mV.xlsx')
+sheet = book.sheet_by_index(4)
 
 "Input"
 #start_time
