@@ -17,36 +17,36 @@ warnings.filterwarnings("ignore")
 
 "INPUT"
 #number of state
-n = 23
+n = 15
 #covariance type
 covar_type = "full"
 #number of iteration
 iterr = 250
 #figure name
-figname1 = "RTV300mVCurren5;n23;iter250n%d" % n
+figname1 = "RTA300mVCurrent7(1);n16;iter250n%d" % n
 # figname2 = "result__foldernameanalysis1_3d_scatterplot"
-figname3 = "RTV300mVCurren5;n23;iter250analysis1_colormapplot_1"
+figname3 = "RTA300mVCurrent7(1);n16;iter250analysis1_colormapplot_1"
 # figname4 = "result__analysis1_colormapplot_2"
 
 script_dir = os.path.dirname(__file__)
-results_dir = os.path.join(script_dir, 'RTV300mVCurren5;n23;iter250/')
+results_dir = os.path.join(script_dir, 'RTA300mVCurrent7(1);n16;iter250/')
 if not os.path.isdir(results_dir):
     os.makedirs(results_dir)
 
 "Output Data"
-f = open(results_dir + 'RTV300mVCurren5;n23;iter250;output.txt','w')
+f = open(results_dir + 'RTA300mVCurrent7(1);n16;iter250;output.txt','w')
 sys.stdout = f
 
 "Import data from excel file"
 from xlrd import open_workbook
-book = open_workbook('Data_RTV300mV.xlsx')
-sheet = book.sheet_by_index(5)
+book = open_workbook('Data_RTA300mV.xlsx')
+sheet = book.sheet_by_index(7)
   
 "Input"
 #start_time
 start_t = 0
 #end_time
-end_t = sheet.nrows
+end_t = 13742
 x = []
 y = []
 for k in range(start_t,end_t):
@@ -218,7 +218,7 @@ x_i3 = x_i3.tolist()
 x_i3_plus = hidden_states[:]
 x_i3_plus = x_i3_plus.tolist()
 zz3 = []
-  
+
 print
 del x_i3[-1] #remove last element 
 x_i3_plus.pop(0) #remove first element
@@ -330,7 +330,25 @@ y_for_axis = [i for i in y_plot[:]]
 print("=======y_for_axis=======")
 for i in range(len(y_plot)):
     print y_for_axis[i]
+    
+
+# "To print all means states per point"
+# y_hs = hidden_states[:]
+# y_hs = y_hs.tolist()
+# A = []
+# B = []
+# for i in range(len(hidden_states)):
+#     A.append(y_hs[i])
+# for i in range(len(A)):
+#     B.append(model.means_[A][i][0])
+#  
+# y_axis = []
+# y_axis = [i for i in B[:]]
+# print("=======y_axis=======")
+# for i in range(len(B)):
+#     print y_axis[i]
 print("===finished===")
+
 plt.figure(1)
 plt.title("hmm Gaussian method fitting result vs data")
 plt.plot(x,y, 'r')#, x,y, 'bo')
